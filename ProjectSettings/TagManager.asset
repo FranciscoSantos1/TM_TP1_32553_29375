@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - checkpoint1
+  - start
+  - checkpoint2
+  - checkpoint3
+  - Car
   layers:
   - Default
   - TransparentFX
