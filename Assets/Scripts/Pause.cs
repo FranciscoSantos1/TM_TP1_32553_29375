@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-
 public class Pause : MonoBehaviour
 {
-    public Transform pauseMenu;
+    public GameObject pauseMenu;
+    public GameObject scoreboardPanel;
+    private bool scoreboardWasActive;
 
     void Update()
     {
@@ -18,36 +17,49 @@ public class Pause : MonoBehaviour
 
     private void TogglePause()
     {
-        if (pauseMenu.gameObject.activeSelf)
+        if (pauseMenu.activeSelf)
         {
             ResumeGame();
         }
         else
         {
-            pauseMenu.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            scoreboardWasActive = scoreboardPanel.activeSelf;
+            pauseMenu.SetActive(true);
+            scoreboardPanel.SetActive(false); 
+            Time.timeScale = 0; 
         }
     }
 
     public void ResumeGame()
     {
-        pauseMenu.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        if (scoreboardWasActive)
+        {
+            scoreboardPanel.SetActive(true);
+        }
+        Time.timeScale = 1; 
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1;
+        ResumeGame(); // Ensure game is not paused when restarting
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // It's better to use SceneManager.sceneLoaded event
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        var countdownTimer = FindObjectOfType<CountdownTimer>();
-        if (countdownTimer != null)
-        {
-            countdownTimer.ResetTimer();
-        }
-        SceneManager.sceneLoaded -= OnSceneLoaded; // Important to unsubscribe
+        // Reset the game state as necessary when a new scene is loaded
+        ResumeGame();
     }
 }
