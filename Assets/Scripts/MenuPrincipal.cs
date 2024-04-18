@@ -16,6 +16,7 @@ public class MenuPrincipal : MonoBehaviour
     public void ScoreBoard()
     {
         // Implemente aqui a lógica para exibir o placar de pontuação
+        SceneManager.LoadScene("Scoreboard");
     }
 
     public void Sair()

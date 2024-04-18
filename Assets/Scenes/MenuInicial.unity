@@ -727,9 +727,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 2103497685}
+        m_TargetAssemblyTypeName: MenuPrincipal, Assembly-CSharp
+        m_MethodName: ScoreBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
