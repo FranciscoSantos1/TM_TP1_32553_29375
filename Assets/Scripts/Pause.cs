@@ -1,32 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Pause : MonoBehaviour
 {
     public Transform pauseMenu;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            if(pauseMenu.gameObject.activeSelf){
-                pauseMenu.gameObject.SetActive(false);
-                Time.timeScale=1;
-            }
-            else{
-                pauseMenu.gameObject.SetActive(true);
-                Time.timeScale=0;
-            }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
         }
     }
-    public void ResumeGame(){
+
+    private void TogglePause()
+    {
+        if (pauseMenu.gameObject.activeSelf)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            pauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    public void ResumeGame()
+    {
         pauseMenu.gameObject.SetActive(false);
-                Time.timeScale=1;
+        Time.timeScale = 1;
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var countdownTimer = FindObjectOfType<CountdownTimer>();
+        if (countdownTimer != null)
+        {
+            countdownTimer.ResetTimer();
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Important to unsubscribe
     }
 }

@@ -1,34 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-
-public class timmer : MonoBehaviour
+public class timer : MonoBehaviour
 {
-    public float timeRemainig=0;
-    public bool timeIsRunning =true;
+    public float timeRemaining = 0;
+    public bool timeIsRunning = false;
     public TMP_Text timeText;
-    // Start is called before the first frame update
-    void Start()
+
+    void OnEnable()
     {
-        timeIsRunning=true;
+        CountdownTimer.OnCountdownFinished += StartTimer;
     }
 
-    // Update is called once per frame
+    void OnDisable()
+    {
+        CountdownTimer.OnCountdownFinished -= StartTimer;
+    }
+
+    private void StartTimer()
+    {
+        timeRemaining = 0;  // Reset the timer
+        timeIsRunning = true;  // Start the timer
+    }
+
     void Update()
     {
-        if(timeRemainig>=0)
+        if (timeIsRunning)
         {
-            timeRemainig+=Time.deltaTime;
-            DisplayTime(timeRemainig);
+            timeRemaining += Time.deltaTime;
+            DisplayTime(timeRemaining);
         }
     }
-    void DisplayTime (float timeToDisplay){
-        timeToDisplay+=1;
-        float minutes=Mathf.FloorToInt(timeToDisplay/60);
-        float seconds=Mathf.FloorToInt(timeToDisplay%60);
-        timeText.text=string.Format("{0:00}:{1:00}", minutes, seconds);
+
+    void DisplayTime(float timeToDisplay)
+    {
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

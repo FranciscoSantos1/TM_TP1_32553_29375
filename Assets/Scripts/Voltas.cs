@@ -10,7 +10,7 @@ public class ContadorVoltas : MonoBehaviour
     public TMP_Text textoTempo;
     private int voltaAtual = 0;
     private float tempo = 0f;
-
+    private bool raceFinished = false;
 
     private bool passouStart = false;
     private bool passouCheckpoint1 = false;
@@ -19,16 +19,17 @@ public class ContadorVoltas : MonoBehaviour
 
     private void Start()
     {
-
         textoVoltas.text = "0 /3";
         textoTempo.text = "00:00";
     }
 
     private void Update()
     {
-
-        tempo += Time.deltaTime;
-        textoTempo.text = FormatTime(tempo);
+        if (!raceFinished)
+        {
+            tempo += Time.deltaTime;
+            textoTempo.text = FormatTime(tempo);
+        }
     }
 
     private string FormatTime(float time)
@@ -40,16 +41,20 @@ public class ContadorVoltas : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (raceFinished) return;
 
-        
         if (other.CompareTag("start"))
         {
             if (passouStart && passouCheckpoint1 && passouCheckpoint2 && passouCheckpoint3)
             {
                 voltaAtual++;
-                textoVoltas.text = voltaAtual + " /3";
+                textoVoltas.text = $"{voltaAtual} /3";
 
-                //passouStart = false;
+                if (voltaAtual >= 3)
+                {
+                    FinishRace();
+                }
+
                 passouCheckpoint1 = false;
                 passouCheckpoint2 = false;
                 passouCheckpoint3 = false;
@@ -67,8 +72,36 @@ public class ContadorVoltas : MonoBehaviour
         else if (other.CompareTag("checkpoint3") && passouCheckpoint2)
         {
             passouCheckpoint3 = true;
-            
         }
     }
 
+    private void FinishRace()
+    {
+        raceFinished = true;
+        SaveTime();
+    }
+
+    private void SaveTime()
+    {
+        for (int i = 1; i <= 10; i++)
+        {
+            string timeKey = "Time" + i;
+            if (!PlayerPrefs.HasKey(timeKey))
+            {
+                PlayerPrefs.SetFloat(timeKey, tempo);
+                PlayerPrefs.Save();
+                break;
+            }
+            else
+            {
+                float savedTime = PlayerPrefs.GetFloat(timeKey);
+                if (tempo < savedTime)
+                {
+                    float temp = savedTime;
+                    PlayerPrefs.SetFloat(timeKey, tempo);
+                    tempo = temp;
+                }
+            }
+        }
+    }
 }
