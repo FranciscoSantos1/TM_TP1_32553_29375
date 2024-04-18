@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using static CarController;
 
 public class CountdownTimer : MonoBehaviour
 {
     public int countdownTime = 3;
     public TextMeshProUGUI countdownDisplay;
+
+    public Rigidbody RB;
     public bool canMove = false;
+
 
     public static event Action OnCountdownFinished;
 
@@ -35,6 +39,7 @@ public class CountdownTimer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             countdownTime--;
         }
+
 
         countdownDisplay.text = "GO!";
         yield return new WaitForSeconds(1f);

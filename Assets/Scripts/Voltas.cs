@@ -1,3 +1,4 @@
+    
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,32 +77,51 @@ public class ContadorVoltas : MonoBehaviour
     }
 
     private void FinishRace()
-    {
-        raceFinished = true;
-        SaveTime();
-    }
+{
+    raceFinished = true;
+    SaveTime();
+    DisplayScoreboard();  // Show the updated scoreboard
+}
 
     private void SaveTime()
+{
+    List<float> topTimes = new List<float>();
+    // Load existing times
+    for (int i = 1; i <= 10; i++)
     {
-        for (int i = 1; i <= 10; i++)
+        if (PlayerPrefs.HasKey("Time" + i))
         {
-            string timeKey = "Time" + i;
-            if (!PlayerPrefs.HasKey(timeKey))
-            {
-                PlayerPrefs.SetFloat(timeKey, tempo);
-                PlayerPrefs.Save();
-                break;
-            }
-            else
-            {
-                float savedTime = PlayerPrefs.GetFloat(timeKey);
-                if (tempo < savedTime)
-                {
-                    float temp = savedTime;
-                    PlayerPrefs.SetFloat(timeKey, tempo);
-                    tempo = temp;
-                }
-            }
+            topTimes.Add(PlayerPrefs.GetFloat("Time" + i));
         }
     }
+
+    // Add new time and sort the list
+    topTimes.Add(tempo);
+    topTimes.Sort();
+
+    // Save only the top 10 times
+    for (int i = 0; i < topTimes.Count && i < 10; i++)
+    {
+        PlayerPrefs.SetFloat("Time" + (i + 1), topTimes[i]);
+    }
+
+    PlayerPrefs.Save();
+}
+public TMP_Text scoreboardText;  // Assign this via the Inspector
+
+private void DisplayScoreboard()
+{
+    string scoreText = "Top Times:\n";
+    for (int i = 1; i <= 10; i++)
+    {
+        if (PlayerPrefs.HasKey("Time" + i))
+        {
+            float time = PlayerPrefs.GetFloat("Time" + i);
+            scoreText += i + ". " + FormatTime(time) + "\n";
+        }
+    }
+
+    scoreboardText.text = scoreText;
+}
+
 }
