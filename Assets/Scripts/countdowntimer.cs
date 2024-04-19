@@ -12,13 +12,11 @@ public class CountdownTimer : MonoBehaviour
     public bool canMove = false;
     public event Action OnCountdownFinished;
 
-    private GameObject player;
+
 
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Car");
-        player.GetComponent<CarController>().enabled = false;
         ResetTimer();
     }
     public void ResetTimer()
