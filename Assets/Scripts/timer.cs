@@ -8,23 +8,19 @@ public class timer : MonoBehaviour
     public float timeRemaining = 0;
     public bool timeIsRunning = false;
     public TMP_Text timeText;
-
     void OnEnable()
     {
         CountdownTimer.OnCountdownFinished += StartTimer;
     }
-
     void OnDisable()
     {
         CountdownTimer.OnCountdownFinished -= StartTimer;
     }
-
     private void StartTimer()
     {
         timeRemaining = 0;  // Reset the timer
         timeIsRunning = true;  // Start the timer
     }
-
     void Update()
     {
         if (timeIsRunning)
@@ -33,7 +29,6 @@ public class timer : MonoBehaviour
             DisplayTime(timeRemaining);
         }
     }
-
     void DisplayTime(float timeToDisplay)
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);

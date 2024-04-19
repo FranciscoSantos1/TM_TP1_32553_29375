@@ -11,12 +11,9 @@ public class ContadorVoltas : MonoBehaviour
     public TMP_Text textoTempo;
     private int voltaAtual = 0;
     private float tempo = 0f;
-
     public GameObject scoreBoardPanel;
-
     public List<TMP_Text> topTimesTexts; 
     private bool raceFinished = false;
-
     private bool passouStart = false;
     private bool passouCheckpoint1 = false;
     private bool passouCheckpoint2 = false;
@@ -55,12 +52,10 @@ public class ContadorVoltas : MonoBehaviour
             {
                 voltaAtual++;
                 textoVoltas.text = $"{voltaAtual} /3";
-
                 if (voltaAtual >= 3)
                 {
                     FinishRace();
                 }
-
                 passouCheckpoint1 = false;
                 passouCheckpoint2 = false;
                 passouCheckpoint3 = false;
@@ -80,7 +75,6 @@ public class ContadorVoltas : MonoBehaviour
             passouCheckpoint3 = true;
         }
     }
-
     private void FinishRace()
     {
         raceFinished = true;
@@ -88,11 +82,9 @@ public class ContadorVoltas : MonoBehaviour
         UpdateScoreboard();
         scoreBoardPanel.SetActive(true);
     }
-
     private void SaveTime()
 {
     List<float> topTimes = new List<float>();
-    // Load existing times
     for (int i = 1; i <= 10; i++)
     {
         if (PlayerPrefs.HasKey("Time" + i))
@@ -100,22 +92,17 @@ public class ContadorVoltas : MonoBehaviour
             topTimes.Add(PlayerPrefs.GetFloat("Time" + i));
         }
     }
-
-    // Add new time and sort the list
     topTimes.Add(tempo);
     topTimes.Sort();
 
-    // Save only the top 10 times
     for (int i = 0; i < topTimes.Count && i < 10; i++)
     {
         PlayerPrefs.SetFloat("Time" + (i + 1), topTimes[i]);
     }
-
     PlayerPrefs.Save();
 }
 private void UpdateScoreboard()
     {
-        // Fetch and display the top 10 times
         for (int i = 0; i < topTimesTexts.Count && i < 10; i++)
         {
             string timeKey = "Time" + (i + 1);

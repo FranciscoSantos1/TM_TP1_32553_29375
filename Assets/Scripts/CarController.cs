@@ -10,7 +10,7 @@ public class CarController : MonoBehaviour
 
     private float speedInput, turnInput;
     private bool grounded;
-    public bool canMove = false;  // Added flag to control movement
+    public bool canMove = false;  
 
     public LayerMask whatIsGround;
     public float groundRayLength = .5f;
@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        if (canMove)  // Check if movement is allowed
+        if (canMove)  
         {
             speedInput = 0f;
 

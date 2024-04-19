@@ -42,11 +42,11 @@ public class Pause : MonoBehaviour
 
     public void RestartGame()
     {
-        ResumeGame(); // Ensure game is not paused when restarting
+        ResumeGame(); 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // It's better to use SceneManager.sceneLoaded event
+    
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -59,7 +59,7 @@ public class Pause : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Reset the game state as necessary when a new scene is loaded
+        
         ResumeGame();
     }
 }

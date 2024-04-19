@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class Scoreboard : MonoBehaviour
 {
-        public GameObject scoreBoardPanel;
-
-
-    // Start is called before the first frame update
+    public GameObject scoreBoardPanel;
     void Start()
     {
     scoreBoardPanel.SetActive(true);
-    }
-
-    // Update is called once per frame
-
+    }    
 }
