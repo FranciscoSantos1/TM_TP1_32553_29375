@@ -15,7 +15,10 @@ public class MenuPrincipal : MonoBehaviour
 
     public void ScoreBoard()
     {
-        // Implemente aqui a lógica para exibir o placar de pontuação
+        // Define uma flag no PlayerPrefs indicando que o placar deve ser exibido
+        PlayerPrefs.SetInt("ShowScoreboard", 1);
+
+        // Carrega a cena do placar de pontuação
         SceneManager.LoadScene("Scoreboard");
     }
 

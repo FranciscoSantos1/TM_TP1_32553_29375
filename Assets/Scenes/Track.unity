@@ -6673,7 +6673,6 @@ GameObject:
   - component: {fileID: 1230412532}
   - component: {fileID: 1230412531}
   - component: {fileID: 1230412530}
-  - component: {fileID: 1230412533}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -6799,19 +6798,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230412528}
   m_Enabled: 1
---- !u!114 &1230412533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230412528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f0f6993211a2047ae3bb160e1d0236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
 --- !u!1 &1249057734
 GameObject:
   m_ObjectHideFlags: 0
@@ -12932,6 +12918,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438312421}
   m_CullTransparentMesh: 1
+--- !u!1 &1457584699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1457584701}
+  - component: {fileID: 1457584700}
+  m_Layer: 0
+  m_Name: trackManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1457584700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457584699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cc2b5cb2b42bb408e1ac190925cfc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreboardPanel: {fileID: 811419160}
+--- !u!4 &1457584701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457584699}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1470202241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21498,7 +21529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f0f6993211a2047ae3bb160e1d0236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 658528840}
+  pauseMenu: {fileID: 658528839}
+  scoreboardPanel: {fileID: 811419160}
 --- !u!1001 &2017086674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22487,3 +22519,4 @@ SceneRoots:
   - {fileID: 843289277}
   - {fileID: 1508751088}
   - {fileID: 1141894161}
+  - {fileID: 1457584701}
