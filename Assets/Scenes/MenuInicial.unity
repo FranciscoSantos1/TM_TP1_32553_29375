@@ -970,7 +970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCOREBOARD
+  m_text: CLASSIFICACOES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a74b6200eeda754a9f1ee357057b01d, type: 2}
   m_sharedMaterial: {fileID: -2658391761277764216, guid: 0a74b6200eeda754a9f1ee357057b01d,
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: JOGAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a74b6200eeda754a9f1ee357057b01d, type: 2}
   m_sharedMaterial: {fileID: -2658391761277764216, guid: 0a74b6200eeda754a9f1ee357057b01d,

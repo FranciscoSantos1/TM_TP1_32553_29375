@@ -1668,8 +1668,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 453}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: 81.16298, y: 453.9192}
+  m_SizeDelta: {x: 463.9402, y: 98.4268}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009315464
 MonoBehaviour:
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scoreboard
+  m_text: CLASSIFICAcoES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a74b6200eeda754a9f1ee357057b01d, type: 2}
   m_sharedMaterial: {fileID: -2658391761277764216, guid: 0a74b6200eeda754a9f1ee357057b01d,
@@ -2818,7 +2818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 758, y: 379}
+  m_AnchoredPosition: {x: 676, y: 379}
   m_SizeDelta: {x: 1750, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635837435
@@ -2841,7 +2841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Best times
+  m_text: MELHORES TEMPOS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a74b6200eeda754a9f1ee357057b01d, type: 2}
   m_sharedMaterial: {fileID: -2658391761277764216, guid: 0a74b6200eeda754a9f1ee357057b01d,
