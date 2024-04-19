@@ -23,6 +23,31 @@ public class CarController : MonoBehaviour
     public float maxEmission = 25f;
     private float emissionRate;
 
+    void Awake()
+    {
+        // Find the CountdownTimer and subscribe to its OnCountdownFinished event.
+        CountdownTimer countdownTimer = FindObjectOfType<CountdownTimer>();
+        if (countdownTimer != null)
+        {
+            countdownTimer.OnCountdownFinished += EnableMovement;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to avoid memory leaks.
+        CountdownTimer countdownTimer = FindObjectOfType<CountdownTimer>();
+        if (countdownTimer != null)
+        {
+            countdownTimer.OnCountdownFinished -= EnableMovement;
+        }
+    }
+
+    private void EnableMovement()
+    {
+        canMove = true; // Car can now move.
+    }
+
     void Start()
     {
         RB.transform.parent = null;

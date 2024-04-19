@@ -8,18 +8,30 @@ public class timer : MonoBehaviour
     public float timeRemaining = 0;
     public bool timeIsRunning = false;
     public TMP_Text timeText;
-    void OnEnable()
+
+
+
+void Awake()
     {
-        CountdownTimer.OnCountdownFinished += StartTimer;
+        CountdownTimer countdownTimer = FindObjectOfType<CountdownTimer>();
+        if (countdownTimer != null)
+        {
+            countdownTimer.OnCountdownFinished += StartTimer;
+        }
     }
-    void OnDisable()
+
+    void OnDestroy()
     {
-        CountdownTimer.OnCountdownFinished -= StartTimer;
+        CountdownTimer countdownTimer = FindObjectOfType<CountdownTimer>();
+        if (countdownTimer != null)
+        {
+            countdownTimer.OnCountdownFinished -= StartTimer;
+        }
     }
+
     private void StartTimer()
     {
-        timeRemaining = 0;  // Reset the timer
-        timeIsRunning = true;  // Start the timer
+        timeIsRunning = true;
     }
     void Update()
     {

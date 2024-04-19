@@ -18,7 +18,6 @@ public class ContadorVoltas : MonoBehaviour
     private bool passouCheckpoint1 = false;
     private bool passouCheckpoint2 = false;
     private bool passouCheckpoint3 = false;
-
     private void Start()
     {
         textoVoltas.text = "0 /3";
@@ -52,7 +51,7 @@ public class ContadorVoltas : MonoBehaviour
             {
                 voltaAtual++;
                 textoVoltas.text = $"{voltaAtual} /3";
-                if (voltaAtual >= 3)
+                if (voltaAtual >= 1)
                 {
                     FinishRace();
                 }

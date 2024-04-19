@@ -13574,8 +13574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownTime: 3
   countdownDisplay: {fileID: 2132608614}
-  RB: {fileID: 0}
-  canMove: 0
+  RB: {fileID: 707265879}
+  canMove: 1
 --- !u!114 &1508751085
 MonoBehaviour:
   m_ObjectHideFlags: 0
