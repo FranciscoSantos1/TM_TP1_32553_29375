@@ -46,6 +46,11 @@ public class Pause : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void CarregarMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
     
     private void OnEnable()
     {

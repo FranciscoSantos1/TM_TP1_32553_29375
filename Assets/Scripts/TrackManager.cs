@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TrackManager : MonoBehaviour
 {
@@ -14,4 +15,10 @@ public class TrackManager : MonoBehaviour
             PlayerPrefs.DeleteKey("ShowScoreboard");
         }
     }
+
+      public void CarregarMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
 }

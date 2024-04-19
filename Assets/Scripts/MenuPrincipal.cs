@@ -19,4 +19,10 @@ public class MenuPrincipal : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void CarregarMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
 }
