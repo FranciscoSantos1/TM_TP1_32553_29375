@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class BotomVoltar : MonoBehaviour
+using UnityEngine.UIElements;
+public class goBack : MonoBehaviour
 {
     public GameObject painelMenuInicial;
-    // Start is called before the first frame update
     public void CarregarCenaJogo()
     {
         SceneManager.LoadSceneAsync(0);

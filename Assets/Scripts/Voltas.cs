@@ -51,7 +51,7 @@ public class ContadorVoltas : MonoBehaviour
             {
                 voltaAtual++;
                 textoVoltas.text = $"{voltaAtual} /3";
-                if (voltaAtual >= 1)
+                if (voltaAtual >= 3)
                 {
                     FinishRace();
                 }
